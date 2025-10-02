@@ -1,11 +1,9 @@
-body {
-background: pink;
-font-family: Arial, Helvetica, sans-serif;
-}
-h1 {
-color: green;
-text-align: center;
-}
 p {
 text-align: center; color: red;
+}
+#para1 {
+text-align: center; color: blue;
+}
+.center {
+text-align: center; color: green;
 }
