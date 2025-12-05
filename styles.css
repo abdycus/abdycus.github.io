@@ -1,44 +1,44 @@
-
+/* RESET */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: #fafafa;
+  background: #f4f4f4;
   color: #222;
   padding: 20px;
 
-  /* center page content */
+  /* Full centering */
   display: flex;
   justify-content: center;
 }
 
 .container {
   width: 100%;
-  max-width: 900px; /* adjust to control overall page width */
+  max-width: 750px;     /* Makes content centered and clean */
 }
 
-/* GENERAL HEADINGS */
+/* HEADINGS */
 h1 {
-  margin-bottom: 10px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 h2 {
-  margin-bottom: 10px;
   margin-top: 20px;
+  margin-bottom: 10px;
 }
 
-/* ---- LAYOUT STRUCTURE ---- */
+/* ABOUT + SKILLS LAYOUT */
 .top-section {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-/* About + Skills side-by-side on larger screens */
 @media (min-width: 750px) {
   .top-section {
     flex-direction: row;
@@ -48,73 +48,31 @@ h2 {
   }
 }
 
-/* Section Cards */
-.about, .skills, .contact {
+/* CARD STYLES */
+.about, .skills, .contact, .project {
   background: white;
   border: 1px solid #ddd;
   padding: 15px;
   border-radius: 6px;
+  margin-bottom: 20px;
 }
 
-/* ---- PROJECTS GRID ---- */
+/* PROJECT GRID — stays minimal */
 .projects {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 15px;
-  margin-top: 20px;
+  gap: 20px;
 }
 
-@media (min-width: 650px) {
-  .projects {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.project {
-  background: white;
-  border: 1px solid #ddd;
-  padding: 12px;
-  border-radius: 6px;
-}
-
-/* ---- IMAGE CONTROL ---- */
-
-/* keep images from being huge */
-.project img,
-img {
-  max-width: 100%;
-  height: auto;
-
-  /* limit tall images like phone photos */
-  max-height: 250px;
-  object-fit: cover;
-
-  border-radius: 4px;
-  margin: 8px 0;
-}
-
-/* If you want EVEN smaller images in project cards, uncomment below: */
-/*
+/* Keep images from being huge */
 .project img {
-  max-height: 150px;
-}
-*/
+  width: 100%;
+  max-width: 300px;   /* 👈 THIS ENSURES SMALL IMAGES */
+  height: auto;
+  display: block;
+  margin: 10px auto;  /* center images */
+  border-radius: 4px;
 
-/* ---- Lists ---- */
-ul {
-  padding-left: 18px;
-  margin-top: 8px;
-}
-
-/* ---- Links ---- */
-a {
-  color: #0066cc;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-.contact {
-  margin-top: 20px;
+  /* Prevent giant vertical photos */
+  max-height: 200px;
+  object-fit: cover;
 }
