@@ -1,98 +1,98 @@
-/* styles.css — blueprint-inspired, minimal, centered layout */
+/* ===========================
+   styles.css — centered, simple,
+   3-column layout, thumbnail-safe
+   =========================== */
 
-/* ---------- RESET ---------- */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html,body { height: 100%; }
+/* ---------- RESET & BASE ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: #f7f7f8;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: #f6f6f7;
   color: #111;
   padding: 28px 18px;
   display: flex;
-  justify-content: center; /* centers the main column */
+  justify-content: center; /* centers the page horizontally */
 }
 
-/* ---------- PAGE WIDTH / CONTAINER ---------- */
+/* ---------- PAGE WRAPPER ---------- */
+/* If you add a <div class="container"> around your content, this will center it */
 .container {
   width: 100%;
-  max-width: 920px;        /* blueprint width */
+  max-width: 1100px; /* page width - adjust to taste */
   margin: 0 auto;
 }
 
 /* ---------- HEADER ---------- */
-header {
-  text-align: center;
-  margin-bottom: 18px;
-}
-header h1 {
-  font-size: 1.8rem;
-  letter-spacing: -0.02em;
-  margin-bottom: 6px;
-}
-header p.lead {
-  color: #555;
-  font-size: 0.98rem;
+header { text-align: center; margin-bottom: 14px; }
+header h1 { font-size: 1.6rem; letter-spacing: -0.02em; margin-bottom: 6px; }
+header p.muted { color: #666; font-size: 0.95rem; }
+
+/* ---------- 3-COLUMN GRID LAYOUT ---------- */
+/* left = info, center = projects, right = sidebar/sketch */
+.layout {
+  display: grid;
+  grid-template-columns: 220px 1fr 280px;
+  gap: 18px;
+  align-items: start;
 }
 
-/* ---------- TOP: ABOUT + SKILLS ---------- */
-.top {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: 18px;
-}
-@media (min-width: 840px) {
-  .top { flex-direction: row; align-items: flex-start; }
-  .about { flex: 1 1 60%; }
-  .skills { flex: 0 0 260px; }
+/* collapse to single column on narrow screens */
+@media (max-width: 980px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { order: 3; } /* sidebar after projects on mobile */
 }
 
-/* simple "card" look for sections */
+/* ---------- GENERIC CARD STYLE ---------- */
 .card {
   background: #fff;
-  border: 1px solid #e3e3e6;
+  border: 1px solid #e6e6e8;
   border-radius: 10px;
-  padding: 14px;
+  padding: 12px;
 }
 
-/* about text slightly denser */
-.about p { color:#333; line-height:1.45; font-size:0.95rem; }
-.about .links { margin-top:10px; color:#555; font-size:0.92rem; }
+/* ---------- LEFT / ABOUT + SKILLS ---------- */
+.left .card + .card { margin-top: 12px; }
+.name { font-weight: 700; margin-bottom: 8px; }
+.about p { color: #333; line-height: 1.45; font-size: 0.95rem; }
+.links { margin-top: 10px; color: #555; font-size: 0.92rem; }
+.skills ul { padding-left: 18px; margin-top: 8px; color: #333; }
+.skills li { margin-bottom: 8px; }
 
-/* skills list */
-.skills ul { padding-left:18px; margin-top:8px; color:#333; }
-.skills li { margin-bottom:8px; }
+/* ---------- CENTER / PROJECTS ---------- */
+.main { min-height: 40px; }
 
-/* ---------- H2 / Section titles (consistent style like your blueprint) ---------- */
-h2.section-title {
-  margin: 6px 0 12px 0;
+.section-title {
   font-size: 1.05rem;
-  color: #111;
+  margin: 0 0 10px 0;
 }
 
-/* ---------- PROJECTS GRID ---------- */
 .projects {
   display: grid;
   gap: 14px;
   grid-template-columns: 1fr;
-  margin-bottom: 16px;
 }
+
+/* two columns for projects on medium+ screens */
 @media (min-width: 720px) {
   .projects { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* project card: thumbnail at left, text at right */
+/* project card: thumbnail left, text right */
 .project {
   display: flex;
   gap: 12px;
   align-items: flex-start;
-  background:#fff;
-  border:1px solid #e3e3e6;
+  background: #fff;
+  border: 1px solid #e6e6e8;
   border-radius: 10px;
-  padding:10px;
+  padding: 10px;
+  min-height: 110px; /* keeps cards consistent even without images */
 }
 
-/* thumb container: fixed square keeps everything uniform */
+/* fixed square thumbnail keeps layout consistent */
 .project-thumb {
   width: 96px;
   height: 96px;
@@ -100,54 +100,65 @@ h2.section-title {
   border-radius: 8px;
   overflow: hidden;
   background: #f2f2f2;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* thumbnail control: crop phone pics, avoid huge images */
+/* crop tall phone photos neatly; never let them be huge */
 .project-thumb img {
   width: 100%;
   height: 100%;
-  object-fit: cover;   /* crops tall phone pics nicely */
+  object-fit: cover; /* crops tall images */
   display: block;
 }
 
-/* fallback for images placed inline (keeps them small) */
-img { max-width: 100%; display:block; }
+/* fallback for inline images - keep them contained */
+img { max-width: 100%; display: block; }
 
-/* project body text */
-.project-body h3 { margin:0 0 6px 0; font-size:1rem; }
-.project-body p { margin:0; color:#444; font-size:0.93rem; line-height:1.4; }
+/* project text */
+.project-body h3 { margin: 0 0 6px 0; font-size: 1rem; }
+.project-body p { margin: 0; color: #444; font-size: 0.92rem; line-height: 1.4; }
 
-/* file-preview card (for problemstatement or large text) */
+/* large file preview (problem statement) */
 .file-preview {
-  width:100%;
-  background:#111; color:#fff;
-  padding:22px; border-radius:8px;
-  text-align:center; font-size:0.96rem; line-height:1.45;
-  max-height:260px; overflow:auto;
+  width: 100%;
+  background: #111;
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  max-height: 260px;
+  overflow: auto;
 }
 
-/* ---------- CONTACT ---------- */
-.contact {
-  margin-top: 14px;
-  text-align:center;
-  color:#222;
+/* ---------- RIGHT / SIDEBAR ---------- */
+.sidebar .card + .card { margin-top: 12px; }
+
+/* keep sketch image constrained and visible without ballooning the page */
+.sidebar img {
+  width: 100%;
+  height: auto;
+  max-height: 520px;    /* prevents very tall images from stretching the page */
+  object-fit: contain;  /* show the whole sketch without cropping */
+  display: block;
+  margin: 0 auto;
+  border-radius: 6px;
 }
 
-/* ---------- LINKS ---------- */
-a { color:#0b66d0; text-decoration:none; }
-a:hover { text-decoration:underline; }
+/* ---------- LINKS / UTILS ---------- */
+a { color: #0b66d0; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.muted { color: #666; font-size: 0.92rem; }
 
-/* ---------- SMALL TOUCHES ---------- */
-/* center smaller items on very small screens */
-@media (max-width:420px) {
-  .project { flex-direction: column; align-items: center; text-align:center; }
-  .project-body { width:100%; }
-  .project-thumb { width:120px; height:120px; flex:0 0 120px; }
+/* mobile tweaks: stack project content and enlarge thumbnail a bit */
+@media (max-width: 420px) {
+  .project { flex-direction: column; align-items: center; text-align: center; }
+  .project-thumb { width: 120px; height: 120px; flex: 0 0 120px; }
 }
 
-/* accessibility focus */
-a:focus { outline: 3px solid rgba(11,102,208,0.12); outline-offset:3px; border-radius:6px; }
+/* accessibility focus outline */
+a:focus { outline: 3px solid rgba(11,102,208,0.12); outline-offset: 3px; border-radius: 6px; }
 
