@@ -61,12 +61,6 @@ h3 {
   border-radius: 6px;
 }
 
-/* mobile: image on top instead of sideways */
-@media (max-width: 500px) {
-  .project { flex-direction: column; text-align: center; }
-  .project img { margin: 0 auto; }
-}
-
 /* ----- LONG TEXT PREVIEW (Problem Statement) ----- */
 .file-preview {
   background: #111;
@@ -78,13 +72,15 @@ h3 {
   margin-top: 10px;
 }
 
-/* ----- LARGE SKETCH IMAGE ----- */
-.sketch-large {
-  width: 100%;
-  max-height: 450px;   /* prevents it from being huge */
-  object-fit: contain;
-  border-radius: 8px;
+/* HARD LIMIT on ALL images so nothing can ever be huge */
+img {
+  max-width: 150px !important;
+  max-height: 150px !important;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
 }
+
 
 /* ----- LINKS ----- */
 a { color: #0b66d0; text-decoration: none; }
