@@ -1,88 +1,145 @@
+<!-- I utilized AI tools to make my code more organized and readable, but none of the contents were altered-->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>CSCE 190: Abby Dycus</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abby Dycus — Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-<h1>Abby Dycus</h1>
-  <div class="about">
-    <h2>About me</h2>
-    <p>I'm a sophomore IT major at UofSC. I enjoy creating projects in Java and Javascript. I am also interested in personal finance.</p>
-    <span>
-    My resume: <a href="files/csceresume.pdf">PDF version</a>
-    | <a href="resume.html">HTML version</a>
-    </span>
+  <div class="container">
+
+    <header>
+      <h1>Abby Dycus</h1>
+      <p class="muted">
+        Sophomore IT major at UofSC • Java • JavaScript • Personal Finance
+      </p>
+    </header>
+
+    <div class="layout">
+
+      <!-- LEFT COLUMN -->
+      <aside class="left">
+
+        <div class="card">
+          <h2>About me</h2>
+          <p>
+            I'm a sophomore IT major at UofSC. I enjoy creating projects in Java and
+            Javascript. I am also interested in personal finance.
+          </p>
+          <p class="muted links">
+            My resume:
+            <a href="files/csceresume.pdf">PDF version</a> |
+            <a href="resume.html">HTML version</a>
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Skills</h2>
+          <ul>
+            <li>Java / JavaScript / HTML / CSS</li>
+            <li>Personal Finance Literacy</li>
+            <li>Networking</li>
+            <li>CompTIA A+</li>
+          </ul>
+        </div>
+
+      </aside>
+
+      <!-- CENTER COLUMN -->
+      <main class="main">
+
+        <h2 class="section-title">Highlighted Projects</h2>
+
+        <div class="projects">
+
+          <!-- Fantasy Game -->
+          <article class="project">
+            <div class="project-thumb">
+              <img src="images/algorithmic_design.png" alt="Fantasy Game thumbnail" />
+            </div>
+            <div class="project-body">
+              <h3><a href="https://github.com/abdycus/java-projects/blob/main/FantasyGame.java">Fantasy Game</a></h3>
+              <p>A brief fantasy choose-your-own-adventure game made using if-statements.</p>
+            </div>
+          </article>
+
+          <!-- Rock Paper Scissors -->
+          <article class="project">
+            <div class="project-thumb">
+              <img src="images/algorithmic_design.png" alt="Rock Paper Scissors thumbnail" />
+            </div>
+            <div class="project-body">
+              <h3><a href="https://github.com/abdycus/java-projects/blob/main/RockPaperScissors.java">Rock Paper Scissors</a></h3>
+              <p>It's just rock paper scissors.</p>
+            </div>
+          </article>
+
+          <!-- Stock Calculator -->
+          <article class="project">
+            <div class="project-thumb">
+              <img src="images/algorithmic_design.png" alt="Stock Calculator thumbnail" />
+            </div>
+            <div class="project-body">
+              <h3><a href="https://github.com/abdycus/java-projects/blob/main/StockCalculator.java">Stock Calculator</a></h3>
+              <p>Determines the profit or loss of a stock transaction.</p>
+            </div>
+          </article>
+
+          <!-- Problem Statement -->
+          <article class="project vertical">
+            <h3><a href="files/problemstatement.pdf">Problem Statement</a></h3>
+            <div class="file-preview">
+              I need to save up $5,000 for an emergency fund but I have a money-spending
+              problem. I want to save while still paying expenses. This app concept explores
+              possible solutions.
+            </div>
+          </article>
+
+          <!-- Affinity Diagram -->
+          <article class="project">
+            <div class="project-thumb">
+              <img src="images/affinitydiagram.png" alt="Affinity Diagram" />
+            </div>
+            <div class="project-body">
+              <h3><a href="images/affinitydiagram.png">Affinity Diagram</a></h3>
+              <p>Created by Abby, Heni, and Malaya.</p>
+            </div>
+          </article>
+
+          <!-- Sketches -->
+          <article class="project">
+            <div class="project-thumb">
+              <img src="images/sketch1.jpg" alt="Sketch thumbnail" />
+            </div>
+            <div class="project-body">
+              <h3><a href="files/sketch.pdf">Sketches</a></h3>
+              <p>Initial concept sketches for our budgeting/spending management app.</p>
+            </div>
+          </article>
+
+        </div>
+      </main>
+
+      <!-- RIGHT COLUMN -->
+      <aside class="sidebar">
+
+        <div class="card">
+          <h2>Contact me</h2>
+          <p>Email: <a href="mailto:adycus@email.sc.edu">adycus@email.sc.edu</a></p>
+        </div>
+
+        <div class="card">
+          <h2>Sketch Preview</h2>
+          <img src="images/sketch1.jpg" alt="Full sketch" class="sketch-large" />
+        </div>
+
+      </aside>
+
+    </div>
+
   </div>
-  <div class="skills"><h2>Skills</h2>
-    <ul>
-      <li>Java/JS/HTML/CSS</li>
-      <li>Personal Finance Literacy</li>
-      <li>Networking</li>
-      <li>CompTIA A+</li>
-    </ul></div>
-  
-  <div class="projects">
-    <h2>Highlighted projects</h2>
-
-    <section class="project">
-<a href="https://github.com/abdycus/java-projects/blob/main/FantasyGame.java">
-<h3>Fantasy Game</h3>
-</a>
-<a href="https://github.com/abdycus/java-projects/blob/main/FantasyGame.java">
-<img src="images/algorithmic_design.png">
-</a>
-<p>A brief fantasy choose your own adventure game made with just if-statements</p>
-</section>
-
-        <section class="project">
-<a href="https://github.com/abdycus/java-projects/blob/main/RockPaperScissors.java">
-<h3>Rock Paper Scissors</h3>
-</a>
-<a href="https://github.com/abdycus/java-projects/blob/main/RockPaperScissors.java">
-<img src="images/algorithmic_design.png">
-</a>
-<p>It's just rock paper scissors</p>
-</section>
-
-        <section class="project">
-<a href="https://github.com/abdycus/java-projects/blob/main/StockCalculator.java">
-<h3>Stock Calculator</h3>
-</a>
-<a href="https://github.com/abdycus/java-projects/blob/main/StockCalculator.java">
-<img src="images/algorithmic_design.png">
-</a>
-<p>Simple calculator program that determines the profit / loss of a stock transaction</p>
-</section>
-    
-  <!-- Problem Statement Assignment -->
-    <section class="project">
-    <a href="files/problemstatement.pdf"><h3>Problem Statement</h3></a>
-    <a href="files/problemstatement.pdf"><img src="images/problemstatementpic.png"></a>
-    <p>I must save money but I have a spending problem.</p>
-    </section>
-    
-    <!--Affinity Diagram Assignment -->
-<section class="project">
-<a href="images/affinitydiagram.png"><h3>Affinity Diagram</h3></a>
-<a href="images/affinitydiagram.png"><img src="images/affinitydiagram.png"></a>
-<p>
-Affinity diagram made by Abby, Heni and Malaya
-</p>
-</section>
-  </div>
-  <div class="contact"><h2>Contact me</h2>
-  <p>Email: adycus@email.sc.edu</p>
-  </div>
-
-  <!--Sketches Assignment-->
-<section class="project">
-<a href="files/sketch.pdf"><h3>Sketches</h3></a>
-<a href="files/sketch.pdf"><img src="images/sketch1.jpg"></a>
-<p>
-Sketch of our idea for an app to help users with budgeting / managing their spending
-</p>
-</section>
-  
 </body>
 </html>
