@@ -1,1 +1,154 @@
+/* ===========================
+   styles.css — clean + centered
+   =========================== */
+
+/* RESET */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f7;
+  color: #222;
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Centered page container */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 6px;
+}
+.muted { color: #666; }
+
+/* 3-column layout */
+.layout {
+  display: grid;
+  grid-template-columns: 230px 1fr 260px;
+  gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Cards */
+.card {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* Section titles */
+.section-title {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+/* Projects grid */
+.projects {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+@media (min-width: 720px) {
+  .projects {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Project card */
+.project {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  min-height: 110px;
+}
+
+/* Vertical-style project (like problem statement) */
+.project.vertical {
+  flex-direction: column;
+}
+
+/* Thumbnail container */
+.project-thumb {
+  width: 92px;
+  height: 92px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #eee;
+  flex-shrink: 0;
+}
+
+/* Thumbnail images */
+.project-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* General images */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Sketch large image (sidebar) */
+.sketch-large {
+  width: 100%;
+  max-height: 450px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+/* Project body text */
+.project-body h3 {
+  margin-bottom: 4px;
+  font-size: 1rem;
+}
+.project-body p {
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+
+/* File preview block */
+.file-preview {
+  background: #111;
+  color: #fff;
+  padding: 18px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  max-height: 220px;
+  overflow-y: auto;
+  text-align: center;
+}
+
+/* Links */
+a {
+  color: #0b5bd3;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
 
