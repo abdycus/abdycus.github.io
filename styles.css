@@ -10,9 +10,15 @@ body {
   background: #fafafa;
   color: #222;
   padding: 20px;
-  max-width: 1000px;
-  margin: auto;
-  line-height: 1.5;
+
+  /* center page content */
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 900px; /* adjust to control overall page width */
 }
 
 /* GENERAL HEADINGS */
@@ -42,7 +48,7 @@ h2 {
   }
 }
 
-/* Section containers */
+/* Section Cards */
 .about, .skills, .contact {
   background: white;
   border: 1px solid #ddd;
@@ -55,4 +61,60 @@ h2 {
   display: grid;
   grid-template-columns: 1fr;
   gap: 15px;
-  margin-top: 20
+  margin-top: 20px;
+}
+
+@media (min-width: 650px) {
+  .projects {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.project {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 12px;
+  border-radius: 6px;
+}
+
+/* ---- IMAGE CONTROL ---- */
+
+/* keep images from being huge */
+.project img,
+img {
+  max-width: 100%;
+  height: auto;
+
+  /* limit tall images like phone photos */
+  max-height: 250px;
+  object-fit: cover;
+
+  border-radius: 4px;
+  margin: 8px 0;
+}
+
+/* If you want EVEN smaller images in project cards, uncomment below: */
+/*
+.project img {
+  max-height: 150px;
+}
+*/
+
+/* ---- Lists ---- */
+ul {
+  padding-left: 18px;
+  margin-top: 8px;
+}
+
+/* ---- Links ---- */
+a {
+  color: #0066cc;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.contact {
+  margin-top: 20px;
+}
