@@ -74,8 +74,8 @@ h3 {
 
 /* HARD LIMIT on ALL images so nothing can ever be huge */
 img {
-  max-width: 150px !important;
-  max-height: 150px !important;
+  max-width: 500px !important;
+  max-height: 500px !important;
   object-fit: cover;
   display: block;
   margin: 0 auto;
