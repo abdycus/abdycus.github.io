@@ -1,78 +1,274 @@
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Abby Dycus — Portfolio</title>
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: #f4f4f4;
-  color: #222;
-  padding: 20px;
+  <!-- Minimal, self-contained CSS (no external fonts) -->
+  <style>
+    /* Reset + base */
+    *,*::before,*::after { box-sizing: border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:#f6f6f7;
+      color:#111;
+      display:flex;
+      justify-content:center;    /* center column horizontally */
+      padding:28px 20px;
+    }
 
-  /* Full centering */
-  display: flex;
-  justify-content: center;
-}
+    /* Page container */
+    .page {
+      width:100%;
+      max-width:920px;          /* change to taste */
+    }
 
-.container {
-  width: 100%;
-  max-width: 750px;     /* Makes content centered and clean */
-}
+    header {
+      text-align:center;
+      margin-bottom:18px;
+    }
+    header h1 {
+      font-size:1.6rem;
+      margin:0 0 6px;
+    }
+    header p {
+      margin:0;
+      color:#555;
+      font-size:0.95rem;
+    }
 
-/* HEADINGS */
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
-}
+    /* Top row: About + Skills (become columns on wide screens) */
+    .top {
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+      margin-bottom:18px;
+    }
+    @media(min-width:800px){
+      .top { flex-direction:row; align-items:flex-start; }
+      .about { flex:1 1 60%; }
+      .skills { flex:0 0 260px; }
+    }
 
-h2 {
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
+    /* Card style (very simple) */
+    .card {
+      background:#fff;
+      border:1px solid #e3e3e6;
+      border-radius:8px;
+      padding:14px;
+    }
+    .card h2 {
+      font-size:1.05rem;
+      margin:0 0 8px;
+    }
+    .card p { color:#333; font-size:0.95rem; margin:0; }
 
-/* ABOUT + SKILLS LAYOUT */
-.top-section {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
+    /* skills list */
+    .skills ul { margin-top:8px; padding-left:18px; color:#333; }
+    .skills li { margin-bottom:6px; }
 
-@media (min-width: 750px) {
-  .top-section {
-    flex-direction: row;
-  }
-  .about, .skills {
-    flex: 1;
-  }
-}
+    /* Projects grid: compact cards with small thumbnail */
+    .projects {
+      display:grid;
+      gap:14px;
+      grid-template-columns: 1fr;
+    }
+    @media(min-width:700px){
+      .projects { grid-template-columns: repeat(2, 1fr); }
+    }
 
-/* CARD STYLES */
-.about, .skills, .contact, .project {
-  background: white;
-  border: 1px solid #ddd;
-  padding: 15px;
-  border-radius: 6px;
-  margin-bottom: 20px;
-}
+    .project {
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      background:#fff;
+      border:1px solid #e3e3e6;
+      border-radius:8px;
+      padding:12px;
+    }
 
-/* PROJECT GRID — stays minimal */
-.projects {
-  display: grid;
-  gap: 20px;
-}
+    /* Thumbnail control — small, centered on small screens */
+    .project-thumb{
+      flex:0 0 88px;                 /* fixed thumbnail column */
+      width:88px;
+      height:88px;
+      overflow:hidden;
+      border-radius:6px;
+      background:#f2f2f2;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .project-thumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;              /* crop tall phone pics nicely */
+      display:block;
+    }
 
-/* Keep images from being huge */
-.project img {
-  width: 100%;
-  max-width: 300px;   /* 👈 THIS ENSURES SMALL IMAGES */
-  height: auto;
-  display: block;
-  margin: 10px auto;  /* center images */
-  border-radius: 4px;
+    /* Project text */
+    .project-body h3{
+      margin:0 0 6px;
+      font-size:1rem;
+    }
+    .project-body p{
+      margin:0;
+      color:#444;
+      font-size:0.92rem;
+    }
 
-  /* Prevent giant vertical photos */
-  max-height: 200px;
-  object-fit: cover;
-}
+    /* If image is not provided or too wide — ensure it never overflows */
+    img { max-width:100%; display:block; }
+
+    /* Problem statement / big file preview — keep inside card and centered */
+    .file-preview {
+      margin-top:10px;
+      max-height:240px;
+      overflow:auto;
+      background:#111;
+      color:#fff;
+      padding:26px;
+      border-radius:6px;
+      font-size:0.98rem;
+      line-height:1.5;
+      text-align:center;
+    }
+
+    /* Contact */
+    .contact {
+      margin-top:18px;
+      text-align:center;
+      color:#333;
+      font-size:0.95rem;
+    }
+
+    /* Links */
+    a { color:#0b66d0; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Small utilities */
+    .muted { color:#666; font-size:0.92rem; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>Abby Dycus</h1>
+      <p class="muted">Sophomore IT major at UofSC — Java / JavaScript / Personal finance</p>
+    </header>
+
+    <div class="top">
+      <section class="card about">
+        <h2>About me</h2>
+        <p>I'm a sophomore IT major at UofSC. I enjoy creating projects in Java and Javascript. I am also interested in personal finance.</p>
+        <p style="margin-top:8px;" class="muted">My resume:
+          <a href="files/csceresume.pdf">PDF version</a> |
+          <a href="resume.html">HTML version</a>
+        </p>
+      </section>
+
+      <aside class="card skills">
+        <h2>Skills</h2>
+        <ul>
+          <li>Java / JS / HTML / CSS</li>
+          <li>Personal Finance Literacy</li>
+          <li>Networking</li>
+          <li>CompTIA A+</li>
+        </ul>
+      </aside>
+    </div>
+
+    <section>
+      <h2 style="margin:0 0 12px;">Highlighted projects</h2>
+
+      <div class="projects">
+
+        <!-- Project 1 -->
+        <article class="project">
+          <div class="project-thumb">
+            <a href="https://github.com/abdycus/java-projects/blob/main/FantasyGame.java">
+              <img src="images/algorithmic_design.png" alt="Fantasy Game">
+            </a>
+          </div>
+          <div class="project-body">
+            <h3><a href="https://github.com/abdycus/java-projects/blob/main/FantasyGame.java">Fantasy Game</a></h3>
+            <p>A brief fantasy choose your own adventure game made with just if-statements.</p>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project">
+          <div class="project-thumb">
+            <a href="https://github.com/abdycus/java-projects/blob/main/RockPaperScissors.java">
+              <img src="images/algorithmic_design.png" alt="Rock Paper Scissors">
+            </a>
+          </div>
+          <div class="project-body">
+            <h3><a href="https://github.com/abdycus/java-projects/blob/main/RockPaperScissors.java">Rock Paper Scissors</a></h3>
+            <p>It's just rock paper scissors.</p>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project">
+          <div class="project-thumb">
+            <a href="https://github.com/abdycus/java-projects/blob/main/StockCalculator.java">
+              <img src="images/algorithmic_design.png" alt="Stock Calculator">
+            </a>
+          </div>
+          <div class="project-body">
+            <h3><a href="https://github.com/abdycus/java-projects/blob/main/StockCalculator.java">Stock Calculator</a></h3>
+            <p>Simple calculator program that determines the profit / loss of a stock transaction.</p>
+          </div>
+        </article>
+
+        <!-- Problem Statement (file preview) -->
+        <article class="project" style="flex-direction:column; align-items:stretch;">
+          <div style="margin-bottom:6px;">
+            <h3 style="margin:0;"><a href="files/problemstatement.pdf">Problem Statement</a></h3>
+          </div>
+          <div class="file-preview">
+            I need to save up $5,000 for an emergency fund but I have a money-spending problem. I have to pay bills/expenses but I also want to save up for an emergency fund. There are ways that I can manage my money in order to save up for the fund.
+          </div>
+        </article>
+
+        <!-- Affinity Diagram -->
+        <article class="project">
+          <div class="project-thumb">
+            <a href="images/affinitydiagram.png">
+              <img src="images/affinitydiagram.png" alt="Affinity Diagram">
+            </a>
+          </div>
+          <div class="project-body">
+            <h3><a href="images/affinitydiagram.png">Affinity Diagram</a></h3>
+            <p>Affinity diagram made by Abby, Heni and Malaya.</p>
+          </div>
+        </article>
+
+        <!-- Sketches (phone photo) - will be thumbnailed -->
+        <article class="project">
+          <div class="project-thumb">
+            <a href="files/sketch.pdf">
+              <!-- show small jpg preview if you have it; otherwise thumbnail is fine -->
+              <img src="images/sketch1.jpg" alt="Sketch">
+            </a>
+          </div>
+          <div class="project-body">
+            <h3><a href="files/sketch.pdf">Sketches</a></h3>
+            <p>Sketch of our idea for an app to help users with budgeting / managing their spending.</p>
+          </div>
+        </article>
+
+      </div> <!-- .projects -->
+    </section>
+
+    <div class="contact">
+      <p>Email: <a href="mailto:adycus@email.sc.edu">adycus@email.sc.edu</a></p>
+    </div>
+
+  </div> <!-- .page -->
+</body>
+</html>
